@@ -1,0 +1,30 @@
+/* Example 4: Complex program with arrays and multi-line comments
+   This demonstrates various MCPP features including:
+   - Arrays
+   - String operations
+   - Nested control structures
+   - Comments
+*/
+
+#include <iostream>
+
+int main() {
+    int numbers[5] = {1, 2, 3, 4, 5};
+    float prices[3] = {10.5, 20.75, 30.0};
+    char vowels[5] = {'a', 'e', 'i', 'o', 'u'};
+    string names[2] = {"Alice", "Bob"};
+    
+    int total = 0;
+    for (int i = 0; i < 5; i++) {
+        total = total + numbers[i];
+    }
+    
+    float average = total / 5.0;
+    
+    if (average > 2.5) {
+        bool isValid = true;
+        string status = "Valid";
+    }
+    
+    return 0;
+}

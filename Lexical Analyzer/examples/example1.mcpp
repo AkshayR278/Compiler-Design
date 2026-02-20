@@ -1,0 +1,14 @@
+// Example 1: Basic variable declarations and arithmetic operations
+#include <iostream>
+
+int main() {
+    int x = 10;
+    int y = 20;
+    int sum = x + y;
+    float pi = 3.14159;
+    char letter = 'A';
+    bool flag = true;
+    string message = "Hello, MCPP!";
+    
+    return 0;
+}

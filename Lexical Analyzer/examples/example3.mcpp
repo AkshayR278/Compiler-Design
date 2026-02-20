@@ -1,0 +1,34 @@
+// Example 3: Functions and operators
+#include <iostream>
+#define MAX_SIZE 100
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int multiply(int x, int y) {
+    return x * y;
+}
+
+int main() {
+    int num1 = 15;
+    int num2 = 25;
+    
+    int sum = add(num1, num2);
+    int product = multiply(num1, num2);
+    
+    bool isEqual = (num1 == num2);
+    bool isGreater = (num1 > num2);
+    bool isLessEqual = (num1 <= num2);
+    
+    int result = (sum + product) / 2;
+    int remainder = result % 10;
+    
+    if (isEqual || isGreater) {
+        result++;
+    } else if (!isLessEqual && result != 0) {
+        result--;
+    }
+    
+    return 0;
+}

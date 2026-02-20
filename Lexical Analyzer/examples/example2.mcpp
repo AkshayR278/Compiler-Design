@@ -1,0 +1,23 @@
+// Example 2: Control flow statements
+#include <iostream>
+
+int main() {
+    int age = 18;
+    
+    if (age >= 18) {
+        bool canVote = true;
+    } else {
+        bool canVote = false;
+    }
+    
+    int i = 0;
+    while (i < 10) {
+        i++;
+    }
+    
+    for (int j = 0; j < 5; j++) {
+        int result = j * 2;
+    }
+    
+    return 0;
+}
