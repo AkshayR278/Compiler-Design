@@ -1,6 +1,6 @@
 # MCPP Lexical Analyzer
 
-A comprehensive lexical analyzer (lexer) implementation for **MCPP (Mini C++)**, a simplified subset of the C++ programming language. This project demonstrates the first phase of compiler construction: lexical analysis, which converts source code into a stream of tokens.
+This is a lexical analyzer implementation for a simplified subset of cpp called **MCPP (Mini C++)**. This project is meant to demonstrate the first phase of compiler construction: lexical analysis, to convert a input program into a stream of tokens.
 
 ## Table of Contents
 
@@ -33,7 +33,7 @@ The MCPP Lexical Analyzer is implemented in Rust and provides:
 - **Control flow**: `if`, `else`, `while`, `for`, `return`
 
 #### 2. Preprocessor Directives
-- `#include`, `#define` (tokenized only, not processed)
+- `#include`, `#define` (not processed)
 
 #### 3. Operators
 - **Arithmetic**: `+`, `-`, `*`, `/`, `%`
@@ -74,32 +74,6 @@ The MCPP Lexical Analyzer is implemented in Rust and provides:
 2. **Token**: Represents a single token with type, lexeme, and position
 3. **SymbolTable**: Maintains a table of identifiers with metadata
 4. **Lexer**: Core tokenization engine with pattern matching
-
-## Tokenization Algorithm
-
-The lexer employs a **regex-based pattern matching** approach with the following algorithm
-
-### Algorithm Overview
-
-```
-1. Initialize pattern list (ordered by specificity)
-2. While not end of source:
-   a. Skip whitespace
-   b. For each pattern (in order):
-      - Try to match pattern at current position
-      - If match found at position 0:
-         * Extract lexeme
-         * Handle special cases (comments, keywords)
-         * Create token with position information
-         * Update symbol table if identifier
-         * Advance position
-         * Break pattern loop
-   c. If no pattern matched:
-      - Report lexical error with position
-      - Stop processing
-3. Add EOF token
-4. Generate outputs (token stream, JSON, symbol table)
-```
 
 ### Pattern Matching Strategy
 
@@ -258,19 +232,6 @@ The lexer stops immediately upon encountering an invalid character:
 ```
 Lexical Error: Invalid character '@' at line 5, column 12
 ```
-
-Error messages include:
-- Invalid character
-- Exact line and column position
-- Clear error indication
-
-
-
-
-
-## License
-
-This project is created for educational purposes as part of a compiler design course.
 
 ## Author
 
