@@ -1,0 +1,308 @@
+[
+  {
+    "token_type": "Include",
+    "lexeme": "#include",
+    "line": 2,
+    "column": 1
+  },
+  {
+    "token_type": "LessThan",
+    "lexeme": "<",
+    "line": 2,
+    "column": 10
+  },
+  {
+    "token_type": "Identifier",
+    "lexeme": "iostream",
+    "line": 2,
+    "column": 11
+  },
+  {
+    "token_type": "GreaterThan",
+    "lexeme": ">",
+    "line": 2,
+    "column": 19
+  },
+  {
+    "token_type": "Int",
+    "lexeme": "int",
+    "line": 4,
+    "column": 1
+  },
+  {
+    "token_type": "Identifier",
+    "lexeme": "main",
+    "line": 4,
+    "column": 5
+  },
+  {
+    "token_type": "LeftParen",
+    "lexeme": "(",
+    "line": 4,
+    "column": 9
+  },
+  {
+    "token_type": "RightParen",
+    "lexeme": ")",
+    "line": 4,
+    "column": 10
+  },
+  {
+    "token_type": "LeftBrace",
+    "lexeme": "{",
+    "line": 4,
+    "column": 12
+  },
+  {
+    "token_type": "Int",
+    "lexeme": "int",
+    "line": 5,
+    "column": 5
+  },
+  {
+    "token_type": "Identifier",
+    "lexeme": "x",
+    "line": 5,
+    "column": 9
+  },
+  {
+    "token_type": "Assign",
+    "lexeme": "=",
+    "line": 5,
+    "column": 11
+  },
+  {
+    "token_type": "IntegerLiteral",
+    "lexeme": "10",
+    "line": 5,
+    "column": 13
+  },
+  {
+    "token_type": "Semicolon",
+    "lexeme": ";",
+    "line": 5,
+    "column": 15
+  },
+  {
+    "token_type": "Int",
+    "lexeme": "int",
+    "line": 6,
+    "column": 5
+  },
+  {
+    "token_type": "Identifier",
+    "lexeme": "y",
+    "line": 6,
+    "column": 9
+  },
+  {
+    "token_type": "Assign",
+    "lexeme": "=",
+    "line": 6,
+    "column": 11
+  },
+  {
+    "token_type": "IntegerLiteral",
+    "lexeme": "20",
+    "line": 6,
+    "column": 13
+  },
+  {
+    "token_type": "Semicolon",
+    "lexeme": ";",
+    "line": 6,
+    "column": 15
+  },
+  {
+    "token_type": "Int",
+    "lexeme": "int",
+    "line": 7,
+    "column": 5
+  },
+  {
+    "token_type": "Identifier",
+    "lexeme": "sum",
+    "line": 7,
+    "column": 9
+  },
+  {
+    "token_type": "Assign",
+    "lexeme": "=",
+    "line": 7,
+    "column": 13
+  },
+  {
+    "token_type": "Identifier",
+    "lexeme": "x",
+    "line": 7,
+    "column": 15
+  },
+  {
+    "token_type": "Plus",
+    "lexeme": "+",
+    "line": 7,
+    "column": 17
+  },
+  {
+    "token_type": "Identifier",
+    "lexeme": "y",
+    "line": 7,
+    "column": 19
+  },
+  {
+    "token_type": "Semicolon",
+    "lexeme": ";",
+    "line": 7,
+    "column": 20
+  },
+  {
+    "token_type": "Float",
+    "lexeme": "float",
+    "line": 8,
+    "column": 5
+  },
+  {
+    "token_type": "Identifier",
+    "lexeme": "pi",
+    "line": 8,
+    "column": 11
+  },
+  {
+    "token_type": "Assign",
+    "lexeme": "=",
+    "line": 8,
+    "column": 14
+  },
+  {
+    "token_type": "FloatLiteral",
+    "lexeme": "3.14159",
+    "line": 8,
+    "column": 16
+  },
+  {
+    "token_type": "Semicolon",
+    "lexeme": ";",
+    "line": 8,
+    "column": 23
+  },
+  {
+    "token_type": "Char",
+    "lexeme": "char",
+    "line": 9,
+    "column": 5
+  },
+  {
+    "token_type": "Identifier",
+    "lexeme": "letter",
+    "line": 9,
+    "column": 10
+  },
+  {
+    "token_type": "Assign",
+    "lexeme": "=",
+    "line": 9,
+    "column": 17
+  },
+  {
+    "token_type": "CharLiteral",
+    "lexeme": "'A'",
+    "line": 9,
+    "column": 19
+  },
+  {
+    "token_type": "Semicolon",
+    "lexeme": ";",
+    "line": 9,
+    "column": 22
+  },
+  {
+    "token_type": "Bool",
+    "lexeme": "bool",
+    "line": 10,
+    "column": 5
+  },
+  {
+    "token_type": "Identifier",
+    "lexeme": "flag",
+    "line": 10,
+    "column": 10
+  },
+  {
+    "token_type": "Assign",
+    "lexeme": "=",
+    "line": 10,
+    "column": 15
+  },
+  {
+    "token_type": "BoolLiteral",
+    "lexeme": "true",
+    "line": 10,
+    "column": 17
+  },
+  {
+    "token_type": "Semicolon",
+    "lexeme": ";",
+    "line": 10,
+    "column": 21
+  },
+  {
+    "token_type": "String",
+    "lexeme": "string",
+    "line": 11,
+    "column": 5
+  },
+  {
+    "token_type": "Identifier",
+    "lexeme": "message",
+    "line": 11,
+    "column": 12
+  },
+  {
+    "token_type": "Assign",
+    "lexeme": "=",
+    "line": 11,
+    "column": 20
+  },
+  {
+    "token_type": "StringLiteral",
+    "lexeme": "\"Hello, MCPP!\"",
+    "line": 11,
+    "column": 22
+  },
+  {
+    "token_type": "Semicolon",
+    "lexeme": ";",
+    "line": 11,
+    "column": 36
+  },
+  {
+    "token_type": "Return",
+    "lexeme": "return",
+    "line": 13,
+    "column": 5
+  },
+  {
+    "token_type": "IntegerLiteral",
+    "lexeme": "0",
+    "line": 13,
+    "column": 12
+  },
+  {
+    "token_type": "Semicolon",
+    "lexeme": ";",
+    "line": 13,
+    "column": 13
+  },
+  {
+    "token_type": "RightBrace",
+    "lexeme": "}",
+    "line": 14,
+    "column": 1
+  },
+  {
+    "token_type": "EOF",
+    "lexeme": "EOF",
+    "line": 15,
+    "column": 1
+  }
+]
