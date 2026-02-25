@@ -134,7 +134,7 @@ def experiment_left_factoring() -> None:
     print_grammar("Grammar before left factoring", before)
     print_grammar("Grammar after left factoring", after)
 
-
+#done by Akshay 353
 def main() -> None:
     print("Grammar Transformation Experiments")
     print("1) Elimination of ambiguity")

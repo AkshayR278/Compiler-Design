@@ -152,7 +152,7 @@ def print_dfa(
             if target is not None:
                 print(f"  δ({format_state(state)}, {symbol}) -> {format_state(target)}")
 
-
+#Done by Akshay 353
 def main():
     states, alphabet, start_state, accept_states, transitions = read_nfa()
 

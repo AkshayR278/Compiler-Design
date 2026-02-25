@@ -135,7 +135,7 @@ def print_nfa(nfa: NFA):
         sym_str = "ε" if sym is None else sym
         print(f"  δ({s}, {sym_str}) -> {sorted(targets)}")
 
-
+#Done by Akshay 353
 def main():
     try:
         re_input = input("Enter the re: ").strip()

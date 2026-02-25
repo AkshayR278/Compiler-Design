@@ -265,7 +265,7 @@ def print_parsing_table(
             row.append(cell.ljust(col_width))
         print("".join(row))
 
-
+#Done by Akshay 353
 def main() -> None:
     grammar, start_symbol = read_grammar()
 
