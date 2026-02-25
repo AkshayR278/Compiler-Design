@@ -1,6 +1,6 @@
 # MCPP Lexical Analyzer
 
-This is a lexical analyzer implementation for a simplified subset of cpp called **MCPP (Mini C++)**. This project is meant to demonstrate the first phase of compiler construction: lexical analysis, to convert a input program into a stream of tokens.
+This is a lexical analyzer implementation for a simplified subset of cpp called **MCPP (Mini C++)** . This project is meant to demonstrate the first phase of compiler construction: lexical analysis, to convert a input program into a stream of tokens.
 
 ## Table of Contents
 
@@ -235,4 +235,4 @@ Lexical Error: Invalid character '@' at line 5, column 12
 
 ## Author
 
-Created as part of Compiler Design coursework - Year 3, Semester 6.
+Created as part of Compiler Design coursework - Year 3, Semester 6 By Akshay 353. 
