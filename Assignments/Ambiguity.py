@@ -10,21 +10,13 @@ def print_grammar(title: str, grammar: Grammar) -> None:
         print(f"{head} -> {rhs}")
 
 def eliminate_immediate_left_recursion(nonterminal: str, productions: List[str]) -> Grammar:
-    """
-    Eliminate immediate left recursion for a single nonterminal.
 
-    A -> A α1 | A α2 | ... | β1 | β2
-    becomes
-    A  -> β1 A' | β2 A'
-    A' -> α1 A' | α2 A' | ε
-    """
-    alphas: List[str] = []  # suffixes in left-recursive rules
-    betas: List[str] = []   # non-left-recursive rules
+    alphas: List[str] = [] 
+    betas: List[str] = [] 
 
     for prod in productions:
         tokens = prod.split()
         if tokens and tokens[0] == nonterminal:
-            # Left-recursive: A -> A α  => store α
             suffix = " ".join(tokens[1:]) if len(tokens) > 1 else "ε"
             alphas.append(suffix)
         else:
@@ -55,11 +47,6 @@ def eliminate_immediate_left_recursion(nonterminal: str, productions: List[str])
 
 
 def left_factor_nonterminal(nonterminal: str, productions: List[str]) -> Grammar:
-    """
-    One-step left factoring for a single nonterminal.
-    Finds longest common prefixes and introduces a new nonterminal.
-    """
-    # Group productions by first symbol
     groups: Dict[str, List[List[str]]] = {}
     for prod in productions:
         tokens = prod.split()
@@ -77,7 +64,6 @@ def left_factor_nonterminal(nonterminal: str, productions: List[str]) -> Grammar
             new_prods_for_A.append(" ".join(group[0]))
             continue
 
-        # Find longest common prefix of all productions in this group
         prefix = group[0]
         for tokens in group[1:]:
             i = 0
@@ -93,10 +79,8 @@ def left_factor_nonterminal(nonterminal: str, productions: List[str]) -> Grammar
         prime_index += 1
         prime_nt = nonterminal + ("'" if prime_index == 1 else f"'{prime_index}")
 
-        # A -> prefix A'
         new_prods_for_A.append(" ".join(prefix + [prime_nt]))
 
-        # A' -> suffixes | ε
         prime_prods: List[str] = []
         for tokens in group:
             suffix = tokens[len(prefix) :]
@@ -111,17 +95,6 @@ def left_factor_nonterminal(nonterminal: str, productions: List[str]) -> Grammar
 
 
 def experiment_ambiguity_elimination() -> None:
-    """
-    Classic example: arithmetic expressions with + and *.
-
-    Ambiguous grammar:
-      E -> E + E | E * E | id
-
-    Unambiguous grammar with precedence (* higher than +) and left associativity:
-      E  -> E + T | T
-      T  -> T * F | F
-      F  -> id
-    """
     ambiguous: Grammar = {
         "E": ["E + E", "E * E", "id"],
     }
@@ -132,48 +105,24 @@ def experiment_ambiguity_elimination() -> None:
         "F": ["id"],
     }
 
-    print("\n=== Elimination of Ambiguity ===")
+    print("\nElimination of Ambiguity")
     print_grammar("Ambiguous grammar (no precedence)", ambiguous)
     print_grammar("Unambiguous grammar (with precedence + associativity)", unambiguous)
 
 
 def experiment_left_recursion_elimination() -> None:
-    """
-    Example of removing immediate left recursion.
-
-    Left-recursive grammar:
-      A -> A a | A b | c | d
-
-    After elimination:
-      A  -> c A' | d A'
-      A' -> a A' | b A' | ε
-    """
     left_recursive: Grammar = {
         "A": ["A a", "A b", "c", "d"],
     }
 
-    # Use the actual algorithm to compute the transformed grammar
     transformed = eliminate_immediate_left_recursion("A", left_recursive["A"])
 
-    print("\n=== Elimination of Left Recursion ===")
+    print("\nElimination of Left Recursion")
     print_grammar("Left-recursive grammar", left_recursive)
     print_grammar("Grammar after removing left recursion (computed)", transformed)
 
 
 def experiment_left_factoring() -> None:
-    """
-    Example of left factoring.
-
-    Before left factoring:
-      S -> if E then S else S
-         | if E then S
-         | other
-
-    After left factoring:
-      S  -> if E then S S'
-          | other
-      S' -> else S | ε
-    """
     before: Grammar = {
         "S": ["if E then S else S", "if E then S", "other"],
     }
@@ -181,7 +130,7 @@ def experiment_left_factoring() -> None:
     # Apply left factoring algorithm to the nonterminal S
     after = left_factor_nonterminal("S", before["S"])
 
-    print("\n=== Left Factoring ===")
+    print("\nLeft Factoring")
     print_grammar("Grammar before left factoring", before)
     print_grammar("Grammar after left factoring", after)
 
