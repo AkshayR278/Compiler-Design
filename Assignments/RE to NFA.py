@@ -1,19 +1,12 @@
-"""
-Regular Expression to NFA Converter
-Uses Thompson's construction algorithm.
-Supports: single chars, concatenation (implicit), | (union), * (Kleene star), () grouping.
-"""
-
 from dataclasses import dataclass, field
 from typing import Optional
 
 
 @dataclass
 class NFA:
-    """NFA with epsilon transitions. States are integers."""
     start: int
     accept: int
-    transitions: dict = field(default_factory=dict)  # (state, symbol) -> set of states; symbol None = epsilon
+    transitions: dict = field(default_factory=dict)
 
     def add_transition(self, from_state: int, to_state: int, symbol: Optional[str] = None):
         key = (from_state, symbol)
@@ -30,11 +23,6 @@ class NFA:
 
 
 def re_to_postfix(re_str: str) -> str:
-    """
-    Convert infix RE to postfix (RPN), inserting explicit concatenation.
-    Precedence: * (highest), concatenation, | (lowest).
-    """
-    # Insert concatenation operator '.' between: letter and letter, letter and (, ) and letter, ) and (, * and letter/(
     concat = []
     for i, c in enumerate(re_str):
         if c == " ":
@@ -45,7 +33,7 @@ def re_to_postfix(re_str: str) -> str:
         next_c = re_str[i + 1]
         if next_c == " ":
             continue
-        curr_is_operand = c.isalnum() or c in ")_"  # _ for placeholder
+        curr_is_operand = c.isalnum() or c in ")_"  
         next_is_operand = next_c.isalnum() or next_c in "(_"
         if curr_is_operand and next_is_operand:
             concat.append(".")
@@ -81,7 +69,6 @@ def re_to_postfix(re_str: str) -> str:
 
 
 def build_nfa_from_postfix(postfix: str) -> NFA:
-    """Build NFA from postfix RE using Thompson's construction."""
     state_counter = [0]
 
     def next_state():
@@ -89,18 +76,16 @@ def build_nfa_from_postfix(postfix: str) -> NFA:
         state_counter[0] += 1
         return s
 
-    stack = []  # list of NFA fragments (start, accept)
+    stack = []
 
     for c in postfix:
         if c.isalnum() or c == "_":
-            # Single character: two states, one transition
             s, a = next_state(), next_state()
             nfa = NFA(start=s, accept=a)
             nfa.add_transition(s, a, c)
             stack.append(nfa)
 
         elif c == ".":
-            # Concatenation: accept of second becomes start of first? No: N1 then N2 => connect N1.accept to N2.start
             nfa2 = stack.pop()
             nfa1 = stack.pop()
             nfa1.add_transition(nfa1.accept, nfa2.start, None)  # epsilon
@@ -109,7 +94,6 @@ def build_nfa_from_postfix(postfix: str) -> NFA:
             stack.append(nfa)
 
         elif c == "|":
-            # Union: new start -> epsilon -> both starts; both accepts -> epsilon -> new accept
             nfa2 = stack.pop()
             nfa1 = stack.pop()
             s, a = next_state(), next_state()
@@ -122,7 +106,6 @@ def build_nfa_from_postfix(postfix: str) -> NFA:
             stack.append(nfa)
 
         elif c == "*":
-            # Kleene star: new start and accept; epsilon: start->inner start, start->accept, inner accept->inner start, inner accept->accept
             nfa1 = stack.pop()
             s, a = next_state(), next_state()
             nfa = NFA(start=s, accept=a)
@@ -134,18 +117,16 @@ def build_nfa_from_postfix(postfix: str) -> NFA:
             stack.append(nfa)
 
     if len(stack) != 1:
-        raise ValueError("Invalid regular expression")
+        raise ValueError("Not working")
     return stack[0]
 
 
 def re_to_nfa(re_str: str) -> NFA:
-    """Convert regular expression string to NFA."""
     postfix = re_to_postfix(re_str)
     return build_nfa_from_postfix(postfix)
 
 
 def print_nfa(nfa: NFA):
-    """Print NFA states and transitions in a readable form."""
     states = sorted(nfa.get_states())
     print(f"States: {states}")
     print(f"Start: {nfa.start}, Accept: {nfa.accept}")
@@ -156,17 +137,13 @@ def print_nfa(nfa: NFA):
 
 
 def main():
-    print("Regular Expression to NFA Converter")
-    print("Supported: letters/digits, | (union), * (star), () grouping, concatenation (implicit)")
-    print("Example: (a|b)*abb\n")
-
     try:
-        re_input = input("Enter regular expression: ").strip()
+        re_input = input("Enter the re: ").strip()
     except EOFError:
         re_input = ""
-    if not re_input:
-        re_input = "(a|b)*abb"  # default example
-        print(f"Using example: {re_input}")
+    #if not re_input:
+     #   re_input = "(a|b)*abb"  #example i made for testing
+      #  print(f"Using example: {re_input}")
 
     try:
         nfa = re_to_nfa(re_input)
