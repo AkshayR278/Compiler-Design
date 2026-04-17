@@ -27,7 +27,8 @@ coverage.xml
 .hypothesis/
 
 # Copy files
-*-Copy.py
+Assignments\Ambiguity - Copy.py
+*- Copy.py
 
 # OS generated files
 .DS_Store
